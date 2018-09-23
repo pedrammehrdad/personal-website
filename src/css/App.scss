@@ -1,0 +1,331 @@
+@import '/home/mehrdad/www/mehrdad/node_modules/bootstrap/scss/bootstrap.scss';
+@import '/home/mehrdad/www/mehrdad/src/css/animate.scss';
+@mixin transform($transforms) {
+    -moz-transform: $transforms;
+    -o-transform: $transforms;
+    -ms-transform: $transforms;
+    -webkit-transform: $transforms;
+    transform: $transforms;
+}
+$textColor: #a5a5a5;
+$siteRed: #c41919;
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: #121212;
+    color: $textColor;
+
+
+    font-family: 'Source Code Pro', monospace;
+
+}
+
+.my-container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: white;
+}
+
+.content-place-holder {
+    //overflow-y: hidden;
+    height: 80vh;
+    .content {
+        background-color: #222222;
+        @include border-radius(5px);
+    }
+}
+
+.navigation {
+    li {
+        display: inline-block;
+        @extend .mr-sm-5;
+        @extend .mr-3;
+        a {
+            display: block;
+            .link-text {
+                display: block;
+                font-weight: bold;
+            }
+            color: white;
+            text-decoration: none;
+        }
+        a:before {
+            content: "";
+            margin: 0 auto;
+            display: block;
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid black;
+            @include transition(border 500ms ease-out);
+        }
+        a.active {
+            display: block;
+        }
+        a:hover:before, a.active:before {
+            border-top: 5px solid $siteRed;
+            @include transition(border 500ms ease-out);
+        }
+    }
+}
+
+hr {
+    border-top: 1px solid white;
+}
+
+.skills {
+    height: 100%;
+    .skill-header {
+        font-weight: bold;
+    }
+    .skill-item.selected .deselect {
+        position: absolute;
+        right: 6px;
+        top: 15px;
+        width: 20px;
+        height: 20px;
+        @include transition(.3s);
+    }
+    .skill-item.selected .deselect:before, .skill-item.selected .deselect:after {
+        position: absolute;
+        left: 15px;
+        content: ' ';
+        height: 13px;
+        width: 2px;
+        background-color: $siteRed;
+    }
+    .skill-item.selected .deselect:before {
+        @include transform(rotate(45deg));
+    }
+    .skill-item.selected .deselect:after {
+        @include transform(rotate(-45deg));
+    }
+    .skill-item.selected {
+        position: relative;
+        border: 1px solid $siteRed;
+        @include border-radius(5px);
+    }
+    .skill-item.selected, .skill-item.active {
+        color: $siteRed;
+/*        @include transform(rotateY(360deg));*/
+        @extend .bounceIn;
+    }
+    .skill-item {
+        user-select: none;
+        -moz-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -o-user-select: none;
+        border: 1px solid transparent;
+        cursor: pointer;
+        @include transition(0.5s);
+        @extend .pl-3;
+        @extend .pr-4;
+        @extend .py-1;
+        @extend .mr-1;
+        @extend .mb-1;
+        @extend .d-inline-block;
+    }
+    .skill-item:hover {
+        color: $siteRed;
+    }
+}
+
+.project-page:hover {
+    .separator {
+        width: 20%;
+    }
+}
+
+.project-page {
+    .arrow:hover {
+        opacity: 1;
+    }
+    .arrow {
+        @include transition(.3s);
+        color: $textColor;
+        opacity: 0.6;
+        display: inline-block;
+        position: absolute;
+        top: 40%;
+        .arrow-text {
+            transform: rotate(90deg);
+            -webkit-transform: rotate(90deg);
+            display: block;
+            white-space: nowrap;
+            font-size: 10px;
+            position: absolute;
+            top: 10px;
+        }
+    }
+    .arrow-right {
+        left: 100%;
+        .arrow-text {
+            left: -25px;
+        }
+        .icon {
+            transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+        }
+    }
+    .arrow-left {
+        left: -33px;
+        .arrow-text {
+            left: -20px;
+        }
+        .icon {
+            transform: rotate(135deg);
+            -webkit-transform: rotate(135deg);
+        }
+    }
+    .icon {
+        display: inline-block;
+        position: absolute;
+        top: 40%;
+        border: solid $textColor;
+        border-width: 0 1px 1px 0;
+        padding: 3px;
+        height: 30px;
+        width: 30px;
+    }
+    .close {
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        width: 32px;
+        height: 32px;
+        opacity: 0.3;
+        @include transition(.3s);
+    }
+    .close:hover {
+        opacity: 1;
+    }
+    .close:before, .close:after {
+        position: absolute;
+        left: 15px;
+        content: ' ';
+        height: 33px;
+        width: 2px;
+        background-color: $textColor;
+    }
+    .close:before {
+        transform: rotate(45deg);
+    }
+    .close:after {
+        transform: rotate(-45deg);
+    }
+
+    p {
+        margin-bottom: .5rem;
+    }
+    .separator {
+        @include transition(.5s);
+        width: 10%;
+        margin: 0 auto;
+        border-top: 1px solid $siteRed;
+        @extend .mb-3;
+    }
+    .project-title {
+        color: $textColor;
+        font-weight: bold;
+    }
+
+    .project-info {
+        display: flex;
+        flex-direction: column;
+        overflow: auto;
+        .description {
+            font-size: 12px;
+            @extend .mb-5;
+        }
+        .project-skills {
+            font-size: 14px;
+            @extend .mb-5;
+        }
+    }
+    .project-image > div {
+        flex-basis: 0px;
+        flex-grow: 1;
+        overflow-y: auto;
+        min-height: 60vh;
+    }
+    .project-image {
+        display: flex;
+        flex-direction: column;
+    }
+    .project-link:hover {
+        text-shadow: 1px 1px 1px #333;
+    }
+    .project-link.disabled {
+        background-color: $textColor;
+    }
+    .project-link {
+        text-decoration: none;
+        @include border-radius(3px);
+        width: max-content;
+        padding: 5px 20px;
+        background-color: $siteRed;
+        color: white;
+    }
+}
+
+.projects-list {
+    //max-height: 75vh;
+    //overflow-y: auto;
+    margin-left: 0px;
+    margin-right: 0px;
+    .project-item {
+        overflow: hidden;
+        position: relative;
+        display: inline-block;
+        a {
+            text-transform: uppercase;
+            display: block;
+            position: relative;
+            opacity: .4;
+            text-decoration: none;
+            @include transition(.3s);
+            .project-name {
+                @include transition(.3s);
+                font-weight: bold;
+                color: $textColor;
+                width: 100%;
+                margin-top: 5px;
+                display: block;
+            }
+            .img-holder {
+                overflow: hidden;
+                max-height: 200px;
+                img {
+                    width: 100%;
+                    border: 1px solid transparent;
+                }
+            }
+        }
+        a:hover {
+            opacity: 1;
+            .project-name {
+                color: $siteRed;
+            }
+            img {
+                border: 1px solid $siteRed;
+            }
+        }
+    }
+}
+
+.contact-page {
+    .link {
+        color: $textColor;
+        .social-link {
+            font-size: small;
+            color: white;
+        }
+    }
+
+}

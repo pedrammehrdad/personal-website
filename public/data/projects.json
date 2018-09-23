@@ -1,0 +1,24 @@
+[
+    {
+        "name": "Nimrokh",
+        "url": "https://www.nimrokh.tv",
+        "skills": {
+            "frontend": [
+                "HTML & CSS",
+                "jQuery",
+                "Bootstrap3",
+                "SASS",
+                "React"
+            ],
+            "backend": [
+                "Yii framework",
+                "PHP",
+                "Crawler",
+                "MySQL"
+            ]
+        },
+        "thumb": "./images/nimrokh-thumb.jpg",
+        "image": "./images/nimrokh.jpg",
+        "description": "Nimrokh is a personal project that aims to gather news about the personages and make a complete news archive for them. In the first phase of this project, I designed a web crawler based on PHP, to fetch news and personage. Then by comparing tags and names, news have connected to persons. This phase has completed for Iranian artist.\n Increase accuracy in connecting people to news and fetch new persons from the newly fetched news is a challenge that I am working on. I'm searching for a way to comprehend the text and see if the news is in fact about someone or not.\nUsing Solr and indexing my data is next challenge that I could think of.\n"
+    }
+]
